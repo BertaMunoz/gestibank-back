@@ -20,11 +20,9 @@ import com.wha.spring.service.CompteServiceImpl;
 public class CompteController {
 	@Autowired
 	CompteServiceImpl service;
-	// ClassInjecte class ;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String display() {
-		// traitement à effectué par la méthode du service
 		return "index";
 	}
 	
