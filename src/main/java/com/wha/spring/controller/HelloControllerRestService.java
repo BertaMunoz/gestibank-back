@@ -1,5 +1,9 @@
 package com.wha.spring.controller;
 
+
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,16 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wha.spring.iservice.ClientService;
+import com.wha.spring.model.Client;
 
-@RequestMapping(value = "/employee", method = RequestMethod.GET)
-
+@RestController
+@RequestMapping(value = "/client")
 public class HelloControllerRestService {
 
 	@Autowired
-	EmployeeService service;
+	ClientService service;
 	
-	@Autowired
-	AdressService adrService;
+	//@Autowired
+	//AdressService adrService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String helloWorld() {
@@ -27,22 +33,27 @@ public class HelloControllerRestService {
 	
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Employee> getEmployee(@PathVariable Long id){
-		List Employee> resultat = service.findById(id);
+	public ResponseEntity<Client> getClient(@PathVariable int id){
+		Client resultat = service.findById(id);
 		System.out.println(resultat);
-		return new ResponseEntity<Employee>(resultat, HttpStatus.OK);
+		return new ResponseEntity<Client>(resultat, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Employee> getAAEmployee(@PathVariable Long id){
-		Employee resultat = service.findById(id);
+	@RequestMapping(value = "/getALL", method = RequestMethod.GET)
+	public ResponseEntity<List<Client>> getAllClient(){
+		List<Client> resultat = service.findAllClients();
 		System.out.println(resultat);
-		return new ResponseEntity<Employee>(resultat, HttpStatus.OK);
+		return new ResponseEntity<List<Client>>(resultat, HttpStatus.OK);
 	}
+	
+
 
 	@RequestMapping(value = "create", method = RequestMethod.POST)
-	public Employee createEmployee(@RequestBody Employee emp) {
-		service.saveEmployee(emp);
-		return emp;
+	public Client createClient(@RequestBody Client clt) {
+		service.saveClient(clt);
+		return clt;
 	}
 }
+
+
+
