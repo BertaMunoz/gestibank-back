@@ -40,7 +40,7 @@ public class Client {
 	public String tel;
 
 	@Column(name = "NbrEnfants", nullable = true)
-	public String nbrEnfant;
+	public int nbrEnfant;
 	
 	@Column(name = "Situation", nullable = false)
 	public String situation;
@@ -113,11 +113,11 @@ public class Client {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getNbrEnfant() {
+	public int getNbrEnfant() {
 		return nbrEnfant;
 	}
 
-	public void setNbrEnfant(String nbrEnfant) {
+	public void setNbrEnfant(int nbrEnfant) {
 		this.nbrEnfant = nbrEnfant;
 	}
 

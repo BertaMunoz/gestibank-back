@@ -9,7 +9,16 @@ public class AbstractDao {
 	private SessionFactory sessionFactory;
 	
 	protected Session getSession() {
-		return sessionFactory.getCurrentSession();
+		try {
+			return sessionFactory.getCurrentSession();
+		} catch (Exception e) {
+			return sessionFactory.openSession();
+		}
+		
+	}
+	
+	public void save(Object entity) {
+		getSession().save(entity);
 	}
 	
 	public void persist(Object entity) {

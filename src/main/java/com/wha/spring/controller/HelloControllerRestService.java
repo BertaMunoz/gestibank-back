@@ -2,6 +2,7 @@ package com.wha.spring.controller;
 
 
 
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wha.spring.iservice.ClientService;
 import com.wha.spring.model.Client;
+import com.wha.spring.service.ClientserviceImpl;
 
 @RestController
 @RequestMapping(value = "/client")
 public class HelloControllerRestService {
 
 	@Autowired
-	ClientService service;
+	ClientserviceImpl service;
 	
 	//@Autowired
 	//AdressService adrService;
@@ -53,6 +55,35 @@ public class HelloControllerRestService {
 		service.saveClient(clt);
 		return clt;
 	}
+	
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public ResponseEntity<Client> insert(){
+		
+		Client client1 = new Client();
+		
+		client1.setNom("Machin");
+		client1.setPrenom("Bob");
+		client1.setEmail("BobMachin@gmail.com");
+		client1.setPseudo("Bobmach");
+		client1.setSituation("célibataire");
+		client1.setNbrEnfant(4);
+		client1.setTel("06010030405");
+		service.saveClient(client1);
+		
+		/*Client client2 = new Client();
+		
+		client2.setNom("Truc");
+		client2.setPrenom("Bill");
+		client2.setEmail("BillTruc@gmail.com");
+		client2.setPseudo("BillTruc");
+		client2.setSituation("marié");
+		client2.setNbrEnfant(1);
+		client2.setTel("0645879856");
+		service.saveCompte(client2);*/
+		
+	return new ResponseEntity<Client>(client1, HttpStatus.OK);
+	}
+
 }
 
 

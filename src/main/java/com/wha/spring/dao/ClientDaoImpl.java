@@ -14,7 +14,7 @@ import com.wha.spring.model.Client;
 public class ClientDaoImpl extends AbstractDao implements ClientDao{
 
 	public void saveClient(Client client) {
-		persist(client);
+		save(client);
 	}
 	
 	public void updateClient(Client client) {
