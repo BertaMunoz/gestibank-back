@@ -57,7 +57,11 @@ public class ClientController {
 		return new ResponseEntity<List<Client>>(resultat, HttpStatus.OK);
 	}
 	
-
+	@RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
+	public String deleteClient(@PathVariable int id) {
+		service.deleteClientById(id);
+		return "le client n° : " + id + " est bien supprimé";
+	}
 
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public Client createClient(@RequestBody Client clt) {
