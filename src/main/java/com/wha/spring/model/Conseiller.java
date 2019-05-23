@@ -10,13 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-/*@NamedQueries({ @NamedQuery(name = "Employee.findAll", query = "select e from Employee e"),
-		@NamedQuery(name = "Employee.findBySsn", query = "select e from Employee e where e.ssn =:ssn") })
-*
-*/
 @Entity
 @Table(name = "conseiller")
 public class Conseiller {
@@ -41,18 +37,10 @@ public class Conseiller {
 	@Column(name = "TEL", unique = true, nullable = false)
 	private String tel;
 	
-	@Column(name = "ADRESSE", unique = true, nullable = false)
-	private String adresse;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	public Adresse adresse;
 
-	@Column(name = "CODE_POSTALE", unique = true, nullable = false)
-	private String codePostale;
-	
-	@Column(name = "VILLE", unique = true, nullable = false)
-	private String ville;
-
-/*	@OneToOne(cascade = CascadeType.PERSIST)
-	private Address address;
-
+/*
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Children> childrens;
 */
@@ -63,8 +51,7 @@ public class Conseiller {
 
 	}
 
-	public Conseiller(int mle, /*LocalDate dateEmbauche, */String nom, String prenom, String email, String tel, String adresse,
-		String codePostale, String ville) {
+	public Conseiller(int mle, /*LocalDate dateEmbauche, */String nom, String prenom, String email, String tel, Adresse adresse) {
 	super();
 	this.mle = mle;
 	//this.dateEmbauche = dateEmbauche;
@@ -72,34 +59,13 @@ public class Conseiller {
 	this.prenom = prenom;
 	this.email = email;
 	this.tel = tel;
-	this.adresse = adresse;
-	this.codePostale = codePostale;
-	this.ville = ville;
+	this.adresse=adresse;
 }
-	
-	
-
-	/*public List<Children> getChildrens() {
-		return childrens;
-	}
-
-	public void setChildrens(List<Children> childrens) {
-		this.childrens = childrens;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}*/
-
 	
 	@Override
 	public String toString() {
-		return "Conseiller [mle=" + mle + ", nom=" + nom + ", prenom =" + prenom +
-				", email=" + email + ", tel=" + tel + ", addresse=" + adresse + ", code postale=" + codePostale + ", ville ="+ville+ "]";
+		return "\n Conseiller [mle=" + mle + ", nom=" + nom + ", prenom =" + prenom +
+				", email=" + email + ", tel=" + tel + ", addresse=" + adresse+ "]\n ";
 	}
 
 	public int getMle() {
@@ -149,29 +115,12 @@ public class Conseiller {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
-	public String getAdresse() {
+	public Adresse getAdresse() {
 		return adresse;
 	}
 
-	public void setAdresse(String adresse) {
+	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
-	}
-
-	public String getCodePostale() {
-		return codePostale;
-	}
-
-	public void setCodePostale(String codePostale) {
-		this.codePostale = codePostale;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
 	}
 
 }
