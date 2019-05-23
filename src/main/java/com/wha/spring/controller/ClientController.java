@@ -2,6 +2,8 @@ package com.wha.spring.controller;
 
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -14,19 +16,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wha.spring.iservice.AdresseService;
 import com.wha.spring.iservice.ClientService;
+import com.wha.spring.iservice.NotificationService;
+import com.wha.spring.model.Adresse;
 import com.wha.spring.model.Client;
+import com.wha.spring.model.Notification;
 import com.wha.spring.service.ClientserviceImpl;
 
 @RestController
 @RequestMapping(value = "/client")
-public class HelloControllerRestService {
+public class ClientController {
 
 	@Autowired
 	ClientserviceImpl service;
 	
-	//@Autowired
-	//AdressService adrService;
+	@Autowired
+	AdresseService adrService;
+	
+	@Autowired
+	NotificationService notifService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String helloWorld() {
@@ -60,7 +69,10 @@ public class HelloControllerRestService {
 	public ResponseEntity<Client> insert(){
 		
 		Client client1 = new Client();
-		
+		Adresse adresse1 = new Adresse();
+		Notification notif1 = new Notification();
+		List<Notification> l = new ArrayList<Notification>();
+		l.add(notif1);
 		client1.setNom("Machin");
 		client1.setPrenom("Bob");
 		client1.setEmail("BobMachin@gmail.com");
@@ -68,7 +80,20 @@ public class HelloControllerRestService {
 		client1.setSituation("célibataire");
 		client1.setNbrEnfant(4);
 		client1.setTel("06010030405");
-		service.saveClient(client1);
+		client1.setAdresse(adresse1);
+		client1.setNotifications(l);
+		service.updateClient(client1);
+		
+		adresse1.setNumero(111);
+		adresse1.setRue("de Seze");
+		adresse1.setCp("69006");
+		adresse1.setVille("Lyon");
+		adrService.updateAdresse(adresse1);
+		
+		notif1.setLibelle("verification");
+		notif1.setEtat(true);
+		//notif1.setDate(new LocalDate(2010-12-11));
+		notifService.updateNotification(notif1);
 		
 		/*Client client2 = new Client();
 		

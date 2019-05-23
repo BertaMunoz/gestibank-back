@@ -1,5 +1,7 @@
 package com.wha.spring.model;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +19,8 @@ public class Notification {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "Date", nullable = false)
-	public LocalDate date;
+	@Column(name = "Date", nullable = true)
+	public Calendar date;
 	
 	@Column(name = "Libelle", nullable = false)
 	public String libelle;
@@ -34,11 +36,13 @@ public class Notification {
 		this.id = id;
 	}
 
-	public LocalDate getDate() {
+	
+
+	public Calendar getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(Calendar date) {
 		this.date = date;
 	}
 
