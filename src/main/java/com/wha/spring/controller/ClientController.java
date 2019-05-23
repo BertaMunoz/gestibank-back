@@ -73,6 +73,7 @@ public class ClientController {
 		Notification notif1 = new Notification();
 		List<Notification> l = new ArrayList<Notification>();
 		l.add(notif1);
+		
 		client1.setNom("Machin");
 		client1.setPrenom("Bob");
 		client1.setEmail("BobMachin@gmail.com");
