@@ -53,8 +53,8 @@ public class CompteController {
 	}	
 	
 	@RequestMapping(value = "/update/{numCompte}", method = RequestMethod.PUT)
-	public String updateCompte(@PathVariable("numCompte") int numCompte, @RequestBody Compte compte) {
-		service.updateCompte(numCompte, compte);
+	public String updateCompte(@PathVariable("numCompte") int numCompte, @RequestBody Compte compte) {  
+		service.updateCompte(numCompte, compte);  
 		return "redirect: /getAll";
 	}
 	

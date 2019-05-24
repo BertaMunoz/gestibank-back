@@ -36,18 +36,18 @@ public class CompteDaoImpl extends AbstractDao implements ICompteDao {
 
 	public void updateCompte(int numCompte, Compte compte) {
 		Query q = getSession().createQuery(
-			"UPDATE Compte c "
-			+ "SET dateCreate=:dateCreate,decouvert=:decouvert,plafond=:plafond,solde=:solde,typeCompte=:typeCompte "
-			+ "WHERE c.numCompte=:numCompte");
+			"UPDATE Compte c "  
+			+ "SET dateCreate=:dateCreate,decouvert=:decouvert,plafond=:plafond,solde=:solde,typeCompte=:typeCompte " 
+			+ "WHERE c.numCompte=:numCompte");  
 		
-		q.setParameter("dateCreate", compte.getDateCreate());
+		q.setParameter("dateCreate", compte.getDateCreate());   
 		q.setParameter("decouvert", compte.getDecouvert());
 		q.setParameter("plafond", compte.getPlafond());
 		q.setParameter("solde", compte.getSolde());
 		q.setParameter("typeCompte", compte.getTypeCompte());
-		q.setParameter("numCompte", numCompte);
+		q.setParameter("numCompte", numCompte);   
 		
-		q.executeUpdate();
+		q.executeUpdate();  
 	}
 
 }

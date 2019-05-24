@@ -35,8 +35,8 @@ public class ClientserviceImpl implements ClientService{
 		return dao.findById(id);
 	}
 	
-	public void updateClient(Client client) {
-		dao.updateClient(client);
+	public void updateClient(int id, Client client) {
+		dao.updateClient(id, client);
 	}
 
 	

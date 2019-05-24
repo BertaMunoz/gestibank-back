@@ -10,7 +10,7 @@ public interface ClientDao {
 	
 	List<Client> findAllClient();
 			
-	void updateClient(Client client);
+	void updateClient(int id, Client client);
 
 	Client findById(int id);
 

@@ -16,7 +16,7 @@ public interface ClientService {
 	
 	Client findById(int id);
 	
-	void updateClient(Client client);
+	void updateClient(int id, Client client);
 
 }
 

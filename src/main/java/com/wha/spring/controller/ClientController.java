@@ -21,6 +21,7 @@ import com.wha.spring.iservice.ClientService;
 import com.wha.spring.iservice.NotificationService;
 import com.wha.spring.model.Adresse;
 import com.wha.spring.model.Client;
+import com.wha.spring.model.Compte;
 import com.wha.spring.model.Notification;
 import com.wha.spring.service.ClientserviceImpl;
 
@@ -69,6 +70,17 @@ public class ClientController {
 		return clt;
 	}
 	
+	@RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
+	public Client updateClient(@PathVariable("id") int id, @RequestBody  Client clt) {
+		service.updateClient(id, clt);
+		return clt;
+	}
+	/*@RequestMapping(value = "/update/{numCompte}", method = RequestMethod.PUT)
+	public String updateCompte(@PathVariable("numCompte") int numCompte, @RequestBody Compte compte) {  
+		service.updateCompte(numCompte, compte);  
+		return "redirect: /getAll";
+	}*/
+	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public ResponseEntity<Client> insert(){
 		
@@ -87,18 +99,18 @@ public class ClientController {
 		client1.setTel("06010030405");
 		client1.setAdresse(adresse1);
 		client1.setNotifications(l);
-		service.updateClient(client1);
+		service.saveClient(client1);
 		
 		adresse1.setNumero(111);
 		adresse1.setRue("de Seze");
 		adresse1.setCp("69006");
 		adresse1.setVille("Lyon");
-		adrService.updateAdresse(adresse1);
+		adrService.saveAdresse(adresse1);
 		
 		notif1.setLibelle("verification");
 		notif1.setEtat(true);
 		//notif1.setDate(new LocalDate(2010-12-11));
-		notifService.updateNotification(notif1);
+		notifService.saveNotification(notif1);
 		
 		/*Client client2 = new Client();
 		
