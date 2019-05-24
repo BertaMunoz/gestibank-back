@@ -55,7 +55,7 @@ public class ConseillerController {
 	
 	@RequestMapping(value = "/update/{mle}",method = RequestMethod.PUT)
 	public String updateConseiller(@PathVariable int mle,@RequestBody Conseiller conseiller) {
-		service.updateConseiller(conseiller);
+		service.updateConseiller(mle);
 		return "le conseiller matricule : " + mle + " est bien maj" ;
 	}
 }
