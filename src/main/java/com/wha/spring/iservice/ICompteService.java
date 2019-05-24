@@ -14,5 +14,5 @@ public interface ICompteService {
 	
 	Compte findByNum(int numCompte);
 	
-	void updateCompte(Compte compte);
+	void updateCompte(int numCompte, Compte compte);
 }

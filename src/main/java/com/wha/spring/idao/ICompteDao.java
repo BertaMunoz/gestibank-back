@@ -1,5 +1,6 @@
 package com.wha.spring.idao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.wha.spring.model.Compte;
@@ -13,5 +14,5 @@ public interface ICompteDao {
 	
 	Compte findByNum(int numCompte);
 	
-	void updateCompte(Compte compte);
+	void updateCompte(int numCompte, Compte compte);
 }

@@ -31,8 +31,7 @@ public class CompteServiceImpl implements ICompteService {
 		return dao.findByNum(numCompte);
 	}
 
-	public void updateCompte(Compte compte) {
-		dao.updateCompte(compte);
+	public void updateCompte(int numCompte, Compte compte) {
+		dao.updateCompte(numCompte, compte);
 	}
-
 }

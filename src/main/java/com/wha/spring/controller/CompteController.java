@@ -52,6 +52,12 @@ public class CompteController {
 		return "redirect: /getAll";	
 	}	
 	
+	@RequestMapping(value = "/update/{numCompte}", method = RequestMethod.PUT)
+	public String updateCompte(@PathVariable("numCompte") int numCompte, @RequestBody Compte compte) {
+		service.updateCompte(numCompte, compte);
+		return "redirect: /getAll";
+	}
+	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public ResponseEntity<Compte> insert(){
 		Compte compte1 = new Compte();

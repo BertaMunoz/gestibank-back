@@ -15,26 +15,34 @@ import javax.persistence.Id;
 //import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @Table(name="COMPTE")
 public class Compte {
 	
+	@Autowired
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int numCompte;
 	
+	@Autowired
 	@Column(name="dateCreate", nullable=false)
 	private Calendar dateCreate;
 		
+	@Autowired
 	@Column(name="solde", nullable=false)
 	private double solde;
 	
+	@Autowired
 	@Column(name="typeCompte", nullable=false)
 	private String typeCompte;
 	
+	@Autowired
 	@Column(name="decouvert", nullable=false)
 	private double decouvert;
 		
+	@Autowired
 	@Column(name="plafond", nullable=false)
 	private double plafond;
 	
@@ -50,8 +58,6 @@ public class Compte {
 	public void setNumCompte(int numCompte) {
 		this.numCompte = numCompte;
 	}
-
-	
 
 	public double getSolde() {
 		return solde;

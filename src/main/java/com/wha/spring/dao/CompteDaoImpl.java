@@ -1,5 +1,6 @@
 package com.wha.spring.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -34,8 +35,20 @@ public class CompteDaoImpl extends AbstractDao implements ICompteDao {
 		return (Compte) getSession().get(Compte.class, numCompte);
 	}
 
-	public void updateCompte(Compte compte) {
-		getSession().update(compte);
+	public void updateCompte(int numCompte, Compte compte) {
+		Query q = getSession().createQuery(
+			"UPDATE Compte c "
+			+ "SET dateCreate=:dateCreate,decouvert=:decouvert,plafond=:plafond,solde=:solde,typeCompte=:typeCompte "
+			+ "WHERE c.numCompte=:numCompte");
+		
+		q.setParameter("dateCreate", compte.getDateCreate());
+		q.setParameter("decouvert", compte.getDecouvert());
+		q.setParameter("plafond", compte.getPlafond());
+		q.setParameter("solde", compte.getSolde());
+		q.setParameter("typeCompte", compte.getTypeCompte());
+		q.setParameter("numCompte", numCompte);
+		
+		q.executeUpdate();
 	}
 
 }
