@@ -13,6 +13,6 @@ public interface IConseillerService {
 		
 		Conseiller findByMle(int mle);
 		
-		void updateConseiller(Conseiller conseiller);
+		void updateConseiller(int mle);
 
 }
