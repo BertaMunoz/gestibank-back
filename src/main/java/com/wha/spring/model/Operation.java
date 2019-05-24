@@ -3,16 +3,12 @@ package com.wha.spring.model;
 import java.util.Calendar;
 
 import javax.persistence.Column;
-//import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name="OPERATION")
 public class Operation {
@@ -27,8 +23,50 @@ public class Operation {
 	private char typeOp;
 	
 	@Column(name="montantOp", nullable=false)
-	private float montantOp;
+	private double montantOp;
 	
 	@Column(name="libelleOp", nullable=false)
 	private String libelleOp;
+
+	
+	//Setter et Getter
+	public int getIdOp() {
+		return idOp;
+	}
+
+	public void setIdOp(int idOp) {
+		this.idOp = idOp;
+	}
+
+	public Calendar getDateOp() {
+		return dateOp;
+	}
+
+	public void setDateOp(Calendar dateOp) {
+		this.dateOp = dateOp;
+	}
+
+	public char getTypeOp() {
+		return typeOp;
+	}
+
+	public void setTypeOp(char typeOp) {
+		this.typeOp = typeOp;
+	}
+
+	public double getMontantOp() {
+		return montantOp;
+	}
+
+	public void setMontantOp(double montantOp) {
+		this.montantOp = montantOp;
+	}
+
+	public String getLibelleOp() {
+		return libelleOp;
+	}
+
+	public void setLibelleOp(String libelleOp) {
+		this.libelleOp = libelleOp;
+	}
 }

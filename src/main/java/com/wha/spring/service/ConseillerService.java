@@ -36,8 +36,8 @@ public class ConseillerService implements IConseillerService{
 		return dao.findByMle(mle);
 	}
 
-	public void updateConseiller(Conseiller conseiller) {
-		dao.updateConseiller(conseiller);	
+	public void updateConseiller(int mle) {
+		dao.updateConseiller(mle);	
 	}
 
 }

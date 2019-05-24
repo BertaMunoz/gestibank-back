@@ -14,7 +14,7 @@ void saveConseiller(Conseiller conseiller);
 	void deleteConseillerByMle(int mle);
 	
 	
-	void updateConseiller(Conseiller conseiller);
+	void updateConseiller(int mle);
 
 	Conseiller findByMle(int mle);
 }

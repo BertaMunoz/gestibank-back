@@ -20,11 +20,9 @@ import com.wha.spring.service.CompteServiceImpl;
 public class CompteController {
 	@Autowired
 	CompteServiceImpl service;
-	// ClassInjecte class ;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String display() {
-		// traitement à effectué par la méthode du service
 		return "index";
 	}
 	
@@ -53,6 +51,12 @@ public class CompteController {
 		service.deleteCompteByNum(numCompte);
 		return "redirect: /getAll";	
 	}	
+	
+	@RequestMapping(value = "/update/{numCompte}", method = RequestMethod.PUT)
+	public String updateCompte(@PathVariable("numCompte") int numCompte, @RequestBody Compte compte) {
+		service.updateCompte(numCompte, compte);
+		return "redirect: /getAll";
+	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public ResponseEntity<Compte> insert(){
