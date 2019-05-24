@@ -1,18 +1,16 @@
 package com.wha.spring.model;
 
 import java.util.Calendar;
+import java.util.Collection;
 
-//import java.util.Calendar;
-//import java.util.Collection;
-
-//import javax.persistence.CascadeType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.FetchType;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +44,8 @@ public class Compte {
 	@Column(name="plafond", nullable=false)
 	private double plafond;
 	
-	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	//private Collection<Operation> operation;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Collection<Operation> operation;
 
 	
 	//Getter et Setter
@@ -90,14 +88,14 @@ public class Compte {
 	public void setPlafond(double plafond) {
 		this.plafond = plafond;
 	}
-/*
+
 	public Collection<Operation> getOperation() {
 		return operation;
 	}
 
 	public void setOperation(Collection<Operation> operation) {
 		this.operation = operation;
-	}*/
+	}
 
 	public Calendar getDateCreate() {
 		return dateCreate;
