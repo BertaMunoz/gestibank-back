@@ -45,6 +45,7 @@ public class DataConfig {
 		properties.setProperty(PROPERTY_HBM2DDL, environment.getProperty(PROPERTY_HBM2DDL));
 		properties.setProperty(PROPERTY_DIALECT, environment.getProperty(PROPERTY_DIALECT));
 		properties.setProperty(PROPERTY_SHOW_SQL, environment.getProperty(PROPERTY_SHOW_SQL));
+		properties.setProperty("hibernate.connection.autocommit", environment.getProperty("hibernate.connection.autocommit"));
 		return properties;
 	}
 

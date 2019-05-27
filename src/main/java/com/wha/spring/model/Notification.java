@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.joda.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Notification")
@@ -18,15 +21,26 @@ public class Notification {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "Date", nullable = true)
 	public Calendar date;
-	
+
 	@Column(name = "Libelle", nullable = false)
 	public String libelle;
-	
+
 	@Column(name = "etat", nullable = false)
 	public boolean etat;
+	@JsonIgnore
+	@ManyToOne
+	Client client;
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	public int getId() {
 		return id;
@@ -35,8 +49,6 @@ public class Notification {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
 
 	public Calendar getDate() {
 		return date;
@@ -71,7 +83,5 @@ public class Notification {
 	public String toString() {
 		return "Notification [id=" + id + ", date=" + date + ", libelle=" + libelle + ", etat=" + etat + "]";
 	}
-	
-	
-	
+
 }

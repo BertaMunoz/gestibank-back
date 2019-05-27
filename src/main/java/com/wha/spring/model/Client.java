@@ -1,6 +1,7 @@
 package com.wha.spring.model;
 
 import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import sun.font.EAttribute;
 
 @Entity
 @Table(name = "Client")
@@ -33,7 +40,7 @@ public class Client {
 	@Column(name = "Pseudo", nullable = false)
 	public String pseudo;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	public Adresse adresse; 
 	
 	@Column(name = "Tel", nullable = false)
@@ -45,7 +52,8 @@ public class Client {
 	@Column(name = "Situation", nullable = false)
 	public String situation;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "client")
+	@Fetch(value = FetchMode.JOIN)
 	public List<Notification> Notifications; 
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -152,5 +160,7 @@ public class Client {
 		this.compte = compte;
 	}
 
-	
+	public void initNotifications() {
+		Notifications = new ArrayList<Notification>();
+	}
 }

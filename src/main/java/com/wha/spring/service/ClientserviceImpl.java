@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.wha.spring.idao.ClientDao;
 import com.wha.spring.iservice.ClientService;
+import com.wha.spring.model.Adresse;
 import com.wha.spring.model.Client;
 
 @Service("clientService")
@@ -34,11 +35,9 @@ public class ClientserviceImpl implements ClientService{
 	public Client findById(int id) {
 		return dao.findById(id);
 	}
-	
 	public void updateClient(int id, Client client) {
 		dao.updateClient(id, client);
 	}
-
 	
 
 
