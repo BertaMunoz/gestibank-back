@@ -45,7 +45,7 @@ public class OperationController {
 		op1.setDateOp(new GregorianCalendar(2010, 05, 12));
 		op1.setTypeOp('D');
 		op1.setLibelleOp("Carte Bancaire");
-		op1.setMontantOp(20.00);
+		op1.setMontantOpDebit(20.00);
 		service.saveOperation(op1);
 		return new ResponseEntity<Operation>(op1, HttpStatus.OK);
 	}

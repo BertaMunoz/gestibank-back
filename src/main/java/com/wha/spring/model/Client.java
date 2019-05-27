@@ -1,5 +1,6 @@
 package com.wha.spring.model;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,52 +14,42 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
 @Table(name = "Client")
 public class Client {
-	@Autowired
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Autowired
 	@Column(name = "Nom", nullable = false)
 	public String nom;
 	
-	@Autowired
 	@Column(name = "Prenom", nullable = false)
 	public String prenom;
 	
-	@Autowired
 	@Column(name = "Email", nullable = false)
 	public String email;
 	
-	@Autowired
 	@Column(name = "Pseudo", nullable = false)
 	public String pseudo;
 	
-	@Autowired
 	@OneToOne(cascade = CascadeType.PERSIST)
 	public Adresse adresse; 
 	
-	@Autowired
 	@Column(name = "Tel", nullable = false)
 	public String tel;
 
-	@Autowired
 	@Column(name = "NbrEnfants", nullable = true)
 	public int nbrEnfant;
 	
-	@Autowired
 	@Column(name = "Situation", nullable = false)
 	public String situation;
 	
-	@Autowired
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	public List<Notification> Notifications; 
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Collection<Compte> compte;
 	
 	
 	public List<Notification> getNotifications() {
@@ -151,6 +142,14 @@ public class Client {
 		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", pseudo=" + pseudo
 				+ ", adresse=" + adresse + ", tel=" + tel + ", nbrEnfant=" + nbrEnfant + ", situation=" + situation
 				+ ", Notification=" + Notifications + "]";
+	}
+
+	public Collection<Compte> getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Collection<Compte> compte) {
+		this.compte = compte;
 	}
 
 	
