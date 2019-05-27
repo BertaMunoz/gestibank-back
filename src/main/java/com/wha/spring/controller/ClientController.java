@@ -47,6 +47,10 @@ public class ClientController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Client> getClient(@PathVariable int id){
 		Client resultat = service.findById(id);
+		/*Adresse resul = adrService.findById(id);
+		Notification res = notifService.findById(id);*/
+
+
 		System.out.println(resultat);
 		return new ResponseEntity<Client>(resultat, HttpStatus.OK);
 	}
@@ -75,31 +79,13 @@ public class ClientController {
 		service.updateClient(id, clt);
 		return clt;
 	}
-	/*@RequestMapping(value = "/update/{numCompte}", method = RequestMethod.PUT)
-	public String updateCompte(@PathVariable("numCompte") int numCompte, @RequestBody Compte compte) {  
-		service.updateCompte(numCompte, compte);  
-		return "redirect: /getAll";
-	}*/
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public ResponseEntity<Client> insert(){
 		
 		Client client1 = new Client();
 		Adresse adresse1 = new Adresse();
-		Notification notif1 = new Notification();
-		List<Notification> l = new ArrayList<Notification>();
-		l.add(notif1);
 		
-		client1.setNom("Machin");
-		client1.setPrenom("Bob");
-		client1.setEmail("BobMachin@gmail.com");
-		client1.setPseudo("Bobmach");
-		client1.setSituation("célibataire");
-		client1.setNbrEnfant(4);
-		client1.setTel("06010030405");
-		client1.setAdresse(adresse1);
-		client1.setNotifications(l);
-		service.saveClient(client1);
 		
 		adresse1.setNumero(111);
 		adresse1.setRue("de Seze");
@@ -107,22 +93,23 @@ public class ClientController {
 		adresse1.setVille("Lyon");
 		adrService.saveAdresse(adresse1);
 		
+		
+		client1.setNom("Mach");
+		client1.setPrenom("Bob2");
+		client1.setEmail("BobMachin@gmail.com");
+		client1.setPseudo("Bobmach");
+		client1.setSituation("célibataire");
+		client1.setNbrEnfant(4);
+		client1.setTel("06010030405");
+		client1.setAdresse(adresse1);
+		service.saveClient(client1);
+			
+		Notification notif1 = new Notification();
 		notif1.setLibelle("verification");
 		notif1.setEtat(true);
+		notif1.setClient(client1);
 		//notif1.setDate(new LocalDate(2010-12-11));
 		notifService.saveNotification(notif1);
-		
-		/*Client client2 = new Client();
-		
-		client2.setNom("Truc");
-		client2.setPrenom("Bill");
-		client2.setEmail("BillTruc@gmail.com");
-		client2.setPseudo("BillTruc");
-		client2.setSituation("marié");
-		client2.setNbrEnfant(1);
-		client2.setTel("0645879856");
-		service.saveCompte(client2);*/
-		
 	return new ResponseEntity<Client>(client1, HttpStatus.OK);
 	}
 
@@ -134,3 +121,16 @@ public class ClientController {
 
 
 
+
+
+
+/*Client client2 = new Client();
+
+client2.setNom("Truc");
+client2.setPrenom("Bill");
+client2.setEmail("BillTruc@gmail.com");
+client2.setPseudo("BillTruc");
+client2.setSituation("marié");
+client2.setNbrEnfant(1);
+client2.setTel("0645879856");
+service.saveCompte(client2);*/

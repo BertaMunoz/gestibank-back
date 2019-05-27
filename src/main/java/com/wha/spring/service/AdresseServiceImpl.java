@@ -36,8 +36,8 @@ import com.wha.spring.model.Adresse;
 			return dao.findById(id);
 		}
 		
-		public void updateAdresse(Adresse adresse) {
-			dao.updateAdresse(adresse);
+		public void updateAdresse(int id) {
+			dao.updateAdresse(id);
 		}
 
 		

@@ -16,6 +16,6 @@ public interface AdresseService {
 	
 	Adresse findById(int id);
 	
-	void updateAdresse (Adresse adresse);
+	void updateAdresse (int id);
 
 }

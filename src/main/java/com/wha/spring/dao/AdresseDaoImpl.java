@@ -33,4 +33,9 @@ public class AdresseDaoImpl extends AbstractDao implements AdresseDao{
 		return (Adresse) getSession().get(Adresse.class, id);
 	}
 
+	public void updateAdresse(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

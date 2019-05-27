@@ -3,6 +3,7 @@ package com.wha.spring.iservice;
 
 import java.util.List;
 
+import com.wha.spring.model.Adresse;
 import com.wha.spring.model.Client;
 
 
