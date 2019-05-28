@@ -3,6 +3,9 @@ package com.wha.spring.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +15,13 @@ import com.wha.spring.model.Client;
 
 
 @Repository("clientDao")
+@Transactional
 public class ClientDaoImpl extends AbstractDao implements ClientDao{
 
+	//Déclaration et initialisation d'un attribut logger
+	private final static Logger logger =
+	Logger.getLogger(ClientDaoImpl.class);
+	
 	public void saveClient(Client client) {
 		save(client);
 	}
@@ -34,6 +42,7 @@ public class ClientDaoImpl extends AbstractDao implements ClientDao{
 		return getSession().createQuery("From Client").list();
 	}
 	public Client findById(int id){
+		logger.info("find client by ID");
 		return (Client) getSession().get(Client.class, id);
 	}
 
