@@ -102,8 +102,8 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 		</dependency>		
+
 	</dependencies>
-	
 	<properties>
 		<spring.framework>4.0.6.RELEASE</spring.framework>
 		<hibernate.manager>4.3.6.Final</hibernate.manager>
@@ -112,6 +112,7 @@
 		<spring.data>1.3.4.RELEASE</spring.data>
 		<junit.version>4.12</junit.version>
 	</properties>
+	
 	<build>
 		<finalName>gestibank</finalName>
 	</build>

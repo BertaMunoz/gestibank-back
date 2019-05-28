@@ -67,7 +67,7 @@ public class ClientController {
 		service.deleteClientById(id);
 		return "le client n° : " + id + " est bien supprimé";
 	}
-
+		
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public Client createClient(@RequestBody Client clt) {
 		service.saveClient(clt);
