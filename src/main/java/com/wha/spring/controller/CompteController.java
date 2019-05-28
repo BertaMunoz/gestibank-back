@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wha.spring.dto.CompteDto;
+import com.wha.spring.mapper.CompteUtil;
 import com.wha.spring.model.Compte;
 import com.wha.spring.service.CompteServiceImpl;
 
@@ -27,10 +29,10 @@ public class CompteController {
 	}
 	
 	@RequestMapping(value = "/{numCompte}", method=RequestMethod.GET)
-	public ResponseEntity<Compte> getCompte(@PathVariable int numCompte){
+	public ResponseEntity<CompteDto> getCompte(@PathVariable int numCompte){
 		Compte result = service.findByNum(numCompte);
 		System.out.println(result);
-		return new ResponseEntity<Compte>(result, HttpStatus.OK);
+		return new ResponseEntity<CompteDto>(CompteUtil.entityToDto(result), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/getAll", method=RequestMethod.GET)

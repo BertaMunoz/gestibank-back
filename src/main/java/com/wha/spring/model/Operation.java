@@ -22,8 +22,11 @@ public class Operation {
 	@Column(name="typeOp", nullable=false)
 	private char typeOp;
 	
-	@Column(name="montantOp", nullable=false)
-	private double montantOp;
+	@Column(name="montantOpDebit", nullable=false)
+	private double montantOpDebit;
+	
+	@Column(name="montantOpCredit", nullable=false)
+	private double montantOpCredit;
 	
 	@Column(name="libelleOp", nullable=false)
 	private String libelleOp;
@@ -54,19 +57,27 @@ public class Operation {
 		this.typeOp = typeOp;
 	}
 
-	public double getMontantOp() {
-		return montantOp;
-	}
-
-	public void setMontantOp(double montantOp) {
-		this.montantOp = montantOp;
-	}
-
 	public String getLibelleOp() {
 		return libelleOp;
 	}
 
 	public void setLibelleOp(String libelleOp) {
 		this.libelleOp = libelleOp;
+	}
+
+	public double getMontantOpDebit() {
+		return montantOpDebit;
+	}
+
+	public void setMontantOpDebit(double montantOpDebit) {
+		this.montantOpDebit = montantOpDebit;
+	}
+
+	public double getMontantOpCredit() {
+		return montantOpCredit;
+	}
+
+	public void setMontantOpCredit(double montantOpCredit) {
+		this.montantOpCredit = montantOpCredit;
 	}
 }

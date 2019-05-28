@@ -1,5 +1,6 @@
 package com.wha.spring.model;
 
+import java.util.Collection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +56,8 @@ public class Client {
 	@Fetch(value = FetchMode.JOIN)
 	public List<Notification> Notifications; 
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Collection<Compte> compte;
 	
 	
 	public List<Notification> getNotifications() {
@@ -149,9 +152,15 @@ public class Client {
 				+ ", Notification=" + Notifications + "]";
 	}
 
+	public Collection<Compte> getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Collection<Compte> compte) {
+		this.compte = compte;
+	}
+
 	public void initNotifications() {
 		Notifications = new ArrayList<Notification>();
 	}
-
-	
 }
